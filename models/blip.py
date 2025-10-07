@@ -35,7 +35,7 @@ class BLIP_Base(nn.Module):
             vit (str): model size of vision transformer
         """               
         super().__init__()
-        print(f'enable truncate and padding')
+        # print(f'enable truncate and padding')
         self.visual_encoder, vision_width = create_vit(vit,image_size, vit_grad_ckpt, vit_ckpt_layer)
         self.tokenizer = init_tokenizer()   
         med_config = BertConfig.from_json_file(med_config)
@@ -49,7 +49,7 @@ class BLIP_Base(nn.Module):
         # text = self.tokenizer(caption, return_tensors="pt").to(image.device) 
         
         # edit for batch text input
-        print(f'enable truncate and padding')
+        # print(f'enable truncate and padding')
         text = self.tokenizer(caption, return_tensors="pt", padding=True, truncation=True).to(image.device) 
         
         if mode=='image':    
