@@ -1,4 +1,5 @@
 timm==0.4.12
-transformers==4.15.0
+# transformers==4.15.0 
+transformers==4.17 # for running on colab
 fairscale==0.4.4
 pycocoevalcap
