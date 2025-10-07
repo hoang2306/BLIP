@@ -46,7 +46,10 @@ class BLIP_Base(nn.Module):
     def forward(self, image, caption, mode):
         
         assert mode in ['image', 'text', 'multimodal'], "mode parameter must be image, text, or multimodal"
-        text = self.tokenizer(caption, return_tensors="pt").to(image.device) 
+        # text = self.tokenizer(caption, return_tensors="pt").to(image.device) 
+
+        # edit for batch text input
+        text = self.tokenizer(caption, return_tensors="pt", padding=True, truncation=True).to(image.device) 
         
         if mode=='image':    
             # return image features
